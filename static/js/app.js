@@ -78,9 +78,9 @@ function buildCharts(sample) {
     const barData = [barTrace];
 
     const barLayout = {
-      title: 'Top 10 OTUs',
-      xaxis: { title: 'Sample Values' },
-      yaxis: { title: 'OTU IDs' }
+      title: 'Top 10 Bacteria Cultures Found',
+      xaxis: { title: 'Number of Bacteria' },
+      yaxis: { title: '' }
     };
 
     // Render the Bar Chart
@@ -93,28 +93,39 @@ function init() {
   d3.json("https://static.bc-edx.com/data/dl-1-2/m14/lms/starter/samples.json").then((data) => {
 
     // Get the names field
-
+    const sampleNames = data.names;
 
     // Use d3 to select the dropdown with id of `#selDataset`
-
+    const dropdownMenu= d3.select("#selDataset");
 
     // Use the list of sample names to populate the select options
     // Hint: Inside a loop, you will need to use d3 to append a new
     // option for each sample name.
-
+    sampleNames.forEach((sample) => {
+      dropdownMenu.append("option").text(sample).property("value",sample);
+    });
 
     // Get the first sample from the list
-
+    const firstSample = sampleNames[0];
 
     // Build charts and metadata panel with the first sample
-
+    buildCharts(firstSample);
+    buildMetadata(firstSample);
   });
+
+
+// Add an event listener to the dropdown menu
+d3.selectAll("#selDataset").on("change", function() {
+  const newSample = d3.select(this).property("value");
+  optionChanged(newSample);
+});
 }
 
 // Function for event listener
 function optionChanged(newSample) {
-  // Build charts and metadata panel each time a new sample is selected
-
+// Build charts and metadata panel each time a new sample is selected
+buildCharts(newSample);
+buildMetadata(newSample);
 }
 
 // Initialize the dashboard
