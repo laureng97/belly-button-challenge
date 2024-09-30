@@ -5,8 +5,13 @@ In this assignment, you will build an interactive dashboard to explore the Belly
 
 The dataset reveals that a small handful of microbial species (also called operational taxonomic units, or OTUs, in the study) were present in more than 70% of people, while the rest were relatively rare
 
-# Files
+# Contributions
+The Javascript was edited by Lauren Graves. Troubleshooting and further assistance were acquired using Expert Learning Assistant.
 
+# Files
+The updated JavaScript for this HTML page (index.html) is in the folder listed "static" then the subfolder "js"; the Javascript is labeled "app.js".
+The samples.json contains the samples data needed for the assignment. 
+The index.html is the page that loads the images seen in the "Images" folder.
 
 
 # Requirements
